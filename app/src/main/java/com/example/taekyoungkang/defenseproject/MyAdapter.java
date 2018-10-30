@@ -1,3 +1,5 @@
+package com.example.taekyoungkang.defenseproject;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,25 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.taekyoungkang.defenseproject.R;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 class MyItem{
-        int mIcon;
-        String nName;
-        String nWho;
-        String nLocation;
+    int mIcon;
+    String nName;
+    String nWho;
+    String nLocation;
 
-        MyItem(int aIcon, String aName, String aWho, String aLocation){
-            mIcon = aIcon;
-            nWho = aWho;
-            nLocation = aLocation;
-            nName = aName;
-        }
-        }
+    MyItem(int aIcon, String aName, String aWho, String aLocation){
+        mIcon = aIcon;
+        nWho = aWho;
+        nLocation = aLocation;
+        nName = aName;
+    }
+}
 
 public class MyAdapter extends BaseAdapter {
     private Context mContext;
