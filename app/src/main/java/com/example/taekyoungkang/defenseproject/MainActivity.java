@@ -1,5 +1,6 @@
 package com.example.taekyoungkang.defenseproject;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -49,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_add :
                 Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
                 return true;
-                default:
-                    return super.onOptionsItemSelected(item);
+            case R.id.menu_next :
+                startActivity(new Intent(this, EditActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
     }
 }

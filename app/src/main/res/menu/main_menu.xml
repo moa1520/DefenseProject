@@ -9,4 +9,10 @@
         android:id="@+id/menu_add"
         android:title="추가"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_next"
+        android:title="다음"
+        android:icon="@drawable/next"
+        app:showAsAction="ifRoom|withText"
+        />
 </menu>
