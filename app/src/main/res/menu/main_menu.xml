@@ -2,14 +2,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/quick_action1"
-        android:title="Quick1"
+        android:id="@+id/menu_search"
+        android:title="검색"
         app:showAsAction="ifRoom|withText"/>
     <item
-        android:id="@+id/action_settings"
-        android:title="Quick2"
+        android:id="@+id/menu_add"
+        android:title="추가"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/action_subactivity"
-        android:title="Sub Activity"/>
 </menu>
