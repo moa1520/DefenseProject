@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayList<MyItem> data= new ArrayList<MyItem>();
-        data.add(new MyItem("s1.jpg","설악산 수렴동대피소","주상현","강원 인제군 북면 백담로 1220"));
-        data.add(new MyItem("s2.jpg","지리산 세석동대피소","강태경","경남 산청군 시천면 내대리"));
-        data.add(new MyItem("s3.jpg","덕유산 향적봉대피소","배장근","전북 무주군 설천면 삼공리 산109"));
+        data.add(new MyItem(R.drawable.s1,"설악산 수렴동대피소","주상현","강원 인제군 북면 백담로 1220"));
+        data.add(new MyItem(R.drawable.s2,"지리산 세석동대피소","강태경","경남 산청군 시천면 내대리"));
+        data.add(new MyItem(R.drawable.s3,"덕유산 향적봉대피소","배장근","전북 무주군 설천면 삼공리 산109"));
 
 
         adapter = new MyAdapter(this, R.layout.info,data);

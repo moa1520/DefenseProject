@@ -16,7 +16,7 @@ class MyItem{
     String nWho;
     String nLocation;
 
-    MyItem(String aIcon, String aName, String aWho, String aLocation){
+    MyItem(int aIcon, String aName, String aWho, String aLocation){
         mIcon = aIcon;
         nWho = aWho;
         nLocation = aLocation;
