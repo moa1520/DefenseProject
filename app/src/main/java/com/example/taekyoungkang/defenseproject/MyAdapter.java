@@ -65,10 +65,10 @@ public class MyAdapter extends BaseAdapter {
         name.setText(mItems.get(position).nName);
 
         TextView who = (TextView) convertView.findViewById(R.id.who);
-        name.setText(mItems.get(position).nWho);
+        who.setText(mItems.get(position).nWho);
 
         TextView location = (TextView) convertView.findViewById(R.id.location);
-        name.setText(mItems.get(position).nLocation);
+        location.setText(mItems.get(position).nLocation);
         return convertView;
     }
 }

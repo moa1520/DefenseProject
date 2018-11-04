@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ListView listView=(ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
 
-        listView.setDivider(new ColorDrawable(Color.RED));
+        listView.setDivider(new ColorDrawable(Color.rgb(200,200,200)));
         listView.setDividerHeight(5);
     }
 
