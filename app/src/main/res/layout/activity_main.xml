@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ListView
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview">
-
-    </ListView>
+        android:name="com.example.taekyoungkang.defenseproject.TitlesFragment"
+        android:id="@+id/title"
+        />
 
 </LinearLayout>
