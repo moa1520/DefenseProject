@@ -14,25 +14,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    static MyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<MyItem> data= new ArrayList<MyItem>();
-        data.add(new MyItem(R.drawable.s1,"설악산 수렴동대피소","주상현","강원 인제군 북면 백담로 1220"));
-        data.add(new MyItem(R.drawable.s2,"지리산 세석동대피소","강태경","경남 산청군 시천면 내대리"));
-        data.add(new MyItem(R.drawable.s3,"덕유산 향적봉대피소","배장근","전북 무주군 설천면 삼공리 산109"));
-        data.add(new MyItem(R.drawable.s4,"지리산 노고단대피소","박종범","전남 구례군 산동면 노고단로 1068"));
 
-
-        adapter = new MyAdapter(this, R.layout.info,data);
-
-        ListView listView=(ListView) findViewById(R.id.listview);
-        listView.setAdapter(adapter);
-
-        listView.setDivider(new ColorDrawable(Color.rgb(200,200,200)));
-        listView.setDividerHeight(5);
     }
 
     @Override
