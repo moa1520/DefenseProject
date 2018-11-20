@@ -21,7 +21,7 @@ public class TitlesFragment extends Fragment {
 
     int mCurCheckPosition = -1;
 
-    public interface OnTitleSelectdeListener{
+    public interface OnTitleSelectedListener{
         public void onTitleSelected(int i);
     }
 
@@ -43,7 +43,7 @@ public class TitlesFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 mCurCheckPosition = i;
                 Activity activity = getActivity();
-                ((OnTitleSelectdeListener)activity).onTitleSelected(i);
+                ((OnTitleSelectedListener)activity).onTitleSelected(i);
 
             }
         });
@@ -82,7 +82,7 @@ public class TitlesFragment extends Fragment {
             mCurCheckPosition = savedInstanceState.getInt("curChoice", -1);
             if (mCurCheckPosition >= 0) {
                 Activity activity = getActivity(); // activity associated with the current fragment
-                ((OnTitleSelectdeListener)activity).onTitleSelected(mCurCheckPosition);
+                ((OnTitleSelectedListener)activity).onTitleSelected(mCurCheckPosition);
 
                 ListView lv = (ListView) getView().findViewById(R.id.listview);
                 lv.setSelection(mCurCheckPosition);
