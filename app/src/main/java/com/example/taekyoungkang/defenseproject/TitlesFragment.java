@@ -18,6 +18,8 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class TitlesFragment extends Fragment {
+
+    
     public TitlesFragment() {
         // Required empty public constructor
     }

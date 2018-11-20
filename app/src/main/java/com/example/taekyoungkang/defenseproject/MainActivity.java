@@ -1,6 +1,7 @@
 package com.example.taekyoungkang.defenseproject;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -42,5 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-   
+   public void onTitleSelected(int i){
+        if(getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE){
+            LookFragment lookFragment = new LookFragment();
+            lookFragment.setSelection(i);
+            getSupportFragmentManager().beginTransaction().replace(R.id.look,lookFragment).commit();
+        }
+        else{
+            Intent intent = new Intent(this, LookActivity.class);
+            intent.putExtra("index",i);
+            startActivity(intent);
+        }
+
+   }
 }
