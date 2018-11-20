@@ -18,7 +18,9 @@ import java.util.ArrayList;
  */
 public class LookFragment extends Fragment {
     MyAdapter adapter;
+    int index = -1;
 
+    public void setSelection(int i) { index = i; }
 
     public LookFragment() {
         // Required empty public constructor
@@ -30,6 +32,8 @@ public class LookFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        View rootView = (View)inflater.inflate(R.layout.fragment_look, container, false);
+        ListView lv = (ListView) rootView.findViewById(R.id.listview);
 
         return  inflater.inflate(R.layout.fragment_look, container, false);
     }
