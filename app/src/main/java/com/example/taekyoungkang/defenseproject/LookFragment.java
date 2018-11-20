@@ -18,7 +18,9 @@ import java.util.ArrayList;
  */
 public class LookFragment extends Fragment {
     MyAdapter adapter;
+    int index = -1;
 
+    public void setSelection(int i) { index = i; }
 
     public LookFragment() {
         // Required empty public constructor
@@ -35,7 +37,7 @@ public class LookFragment extends Fragment {
         data.add(new MyItem(R.drawable.s3,"덕유산 향적봉대피소","배장근","전북 무주군 설천면 삼공리 산109"));
         data.add(new MyItem(R.drawable.s4,"지리산 노고단대피소","박종범","전남 구례군 산동면 노고단로 1068"));
 
-        View rootView = (View)inflater.inflate(R.layout.fragment_titles, container, false);
+        View rootView = (View)inflater.inflate(R.layout.fragment_look, container, false);
         ListView lv = (ListView) rootView.findViewById(R.id.listview);
 
         adapter = new MyAdapter(getActivity(), R.layout.info, data);

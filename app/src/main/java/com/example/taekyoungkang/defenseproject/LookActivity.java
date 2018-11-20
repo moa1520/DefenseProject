@@ -9,5 +9,11 @@ public class LookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look);
+
+        LookFragment look = new LookFragment();
+
+        look.setSelection(getIntent().getIntExtra("item", -1));
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.look, look).commit();
     }
 }
