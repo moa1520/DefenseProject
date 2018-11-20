@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_add :
                 Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu_next :
-                startActivity(new Intent(this, EditActivity.class));
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
