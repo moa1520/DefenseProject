@@ -19,7 +19,12 @@ import java.util.ArrayList;
  */
 public class TitlesFragment extends Fragment {
 
-    
+    int mCurCheckPosition = -1;
+
+    public interface OnTitleSelectdeListener{
+        public void onTitleSelected(int i);
+    }
+
     public TitlesFragment() {
         // Required empty public constructor
     }
@@ -32,6 +37,16 @@ public class TitlesFragment extends Fragment {
         View rootView = (View)inflater.inflate(R.layout.fragment_titles, container, false);
         ListView lv = (ListView)rootView.findViewById(R.id.listview);
         lv.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1, Defenseinfo.TITLES));
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                mCurCheckPosition = i;
+                Activity activity = getActivity();
+                ((OnTitleSelectdeListener)activity).onTitleSelected(i);
+
+            }
+        });
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,4 +76,24 @@ public class TitlesFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_titles, container, false);
     }
 
-}
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            mCurCheckPosition = savedInstanceState.getInt("curChoice", -1);
+            if (mCurCheckPosition >= 0) {
+                Activity activity = getActivity(); // activity associated with the current fragment
+                ((OnTitleSelectdeListener)activity).onTitleSelected(mCurCheckPosition);
+
+                ListView lv = (ListView) getView().findViewById(R.id.listview);
+                lv.setSelection(mCurCheckPosition);
+                lv.smoothScrollToPosition(mCurCheckPosition);
+            }
+        }
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curChoice", mCurCheckPosition);
+    }
+
+    }
