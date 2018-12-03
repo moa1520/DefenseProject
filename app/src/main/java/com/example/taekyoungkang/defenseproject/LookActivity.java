@@ -18,9 +18,7 @@ public class LookActivity extends AppCompatActivity {
         }
 
         LookFragment look = new LookFragment();
-
         look.setSelection(getIntent().getIntExtra("index", -1));
-
         getSupportFragmentManager().beginTransaction().replace(R.id.look, look).commit();
     }
 }

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TitlesFragment.OnTitleSelectedListener{
+public class MainActivity extends AppCompatActivity implements TitlesFragment.OnTitleSelectedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_search :
+            case R.id.menu_search:
                 Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu_add :
+            case R.id.menu_add:
                 Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
                 return true;
             default:
@@ -43,18 +43,19 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
 
         }
     }
-   public void onTitleSelected(int i){
-        if(getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE){
+
+    @Override
+    public void onTitleSelected(int i) {
+        if (getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE) {
             LookFragment lookFragment = new LookFragment();
             lookFragment.setSelection(i);
-            getSupportFragmentManager().beginTransaction().replace(R.id.look,lookFragment).commit();
-        }
-        else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.look, lookFragment).commit();
+        } else {
             Intent intent = new Intent(this, LookActivity.class);
-            intent.putExtra("index",i);
+            intent.putExtra("index", i);
             startActivity(intent);
         }
 
-   }
+    }
 }
