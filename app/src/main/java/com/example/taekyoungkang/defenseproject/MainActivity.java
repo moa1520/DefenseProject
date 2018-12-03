@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
 
         }
     }
+    @Override
    public void onTitleSelected(int i){
         if(getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE){

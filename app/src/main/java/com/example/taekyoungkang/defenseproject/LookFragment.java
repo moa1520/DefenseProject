@@ -17,25 +17,40 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class LookFragment extends Fragment {
-    MyAdapter adapter;
     int index = -1;
-
-    public void setSelection(int i) { index = i; }
+    int image;
+    String title, people, address;
 
     public LookFragment() {
         // Required empty public constructor
     }
 
+    public void setSelection(int i) { index = i; }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ArrayList<MyItem> data= new ArrayList<MyItem>();
+
+        image = Defenseinfo.IMAGES[index];
+        title = Defenseinfo.TITLES[index];
+        people = Defenseinfo.PEOPLE[index];
+        address = Defenseinfo.ADRESS[index];
+
+        data.add(new MyItem(image, title, people, address));
 
         View rootView = (View)inflater.inflate(R.layout.fragment_look, container, false);
-        ListView lv = (ListView) rootView.findViewById(R.id.listview);
+        ListView lv = (ListView) rootView.findViewById(R.id.listView);
 
-        return  inflater.inflate(R.layout.fragment_look, container, false);
+        MyAdapter adapter = new MyAdapter(getActivity(), R.layout.info, data);
+
+        lv.setAdapter(adapter);
+
+        lv.setDivider(new ColorDrawable(Color.rgb(200,200,200)));
+        lv.setDividerHeight(5);
+
+
+        return rootView;
     }
-
 }
