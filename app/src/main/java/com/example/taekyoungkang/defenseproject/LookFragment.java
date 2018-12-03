@@ -40,8 +40,8 @@ public class LookFragment extends Fragment {
 
         data.add(new MyItem(image, title, people, address));
 
-        View rootView = (View)inflater.inflate(R.layout.fragment_look, container, false);
-        ListView lv = (ListView) rootView.findViewById(R.id.listView);
+        View view = (View)inflater.inflate(R.layout.fragment_look, container, false);
+        ListView lv = (ListView) view.findViewById(R.id.listView);
 
         MyAdapter adapter = new MyAdapter(getActivity(), R.layout.info, data);
 
@@ -51,6 +51,6 @@ public class LookFragment extends Fragment {
         lv.setDividerHeight(5);
 
 
-        return rootView;
+        return view;
     }
 }
