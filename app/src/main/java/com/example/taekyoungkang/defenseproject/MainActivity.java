@@ -12,9 +12,16 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TitlesFragment.OnTitleSelectedListener {
+public class MainActivity extends AppCompatActivity implements TitlesFragment.OnTitleSelectedListener{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,4 +65,5 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
         }
 
     }
+
 }
