@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
                 Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_add:
-                Toast.makeText(MainActivity.this, item.getTitle() + " selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, WriteActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
