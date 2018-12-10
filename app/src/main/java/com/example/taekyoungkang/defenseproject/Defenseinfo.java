@@ -30,4 +30,10 @@ public class Defenseinfo {
             R.drawable.s3,
             R.drawable.s4
     };
+    public static final double[][] LOCATIONS = {
+            {38.146271, 128.414950},
+            {35.318137, 127.693525},
+            {35.860560, 127.746417},
+            {35.296260, 127.526468}
+    };
 }
