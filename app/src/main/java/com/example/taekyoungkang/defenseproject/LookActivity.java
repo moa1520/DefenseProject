@@ -43,7 +43,8 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         LookFragment look = new LookFragment();
-        look.setSelection(num);
+        //look.setSelection(num);
+        look.setSelection(getIntent().getIntExtra("index",-1));
         getSupportFragmentManager().beginTransaction().replace(R.id.look, look).commit();
     }
 

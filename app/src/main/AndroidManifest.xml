@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LookActivity" />
-        <activity android:name=".WriteActivity"></activity>
+        <activity android:name=".WriteActivity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
