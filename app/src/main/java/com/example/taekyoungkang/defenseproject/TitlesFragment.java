@@ -32,6 +32,7 @@ import java.util.List;
  */
 public class TitlesFragment extends Fragment {
 
+    private static final int REQUEST_CODE_INSERT = 1000;
     DataAdapter mAdapter;
 
     int mCurCheckPosition = -1;
@@ -40,9 +41,9 @@ public class TitlesFragment extends Fragment {
     private Cursor cursor;
     private View rootView;
 
-    public interface OnTitleSelectedListener {
-        public void onTitleSelected(int i);
-    }
+//    public interface OnTitleSelectedListener {
+//        public void onTitleSelected(int i);
+//    }
 
     public TitlesFragment() {
         // Required empty public constructor
@@ -52,7 +53,6 @@ public class TitlesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = (View)inflater.inflate(R.layout.fragment_titles,container, false);
-
 
 //        View rootView = (View) inflater.inflate(R.layout.fragment_titles, container, false);
 //        ListView lv = (ListView) rootView.findViewById(R.id.listview);
@@ -80,30 +80,49 @@ public class TitlesFragment extends Fragment {
         mAdapter = new DataAdapter(getActivity(), cursor);
         lv.setAdapter(mAdapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), LookActivity.class);
+
+                Cursor cursor = (Cursor)mAdapter.getItem(position);
+
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(DataContract.Data.TITLE));
+                String contents = cursor.getString(cursor.getColumnIndexOrThrow(DataContract.Data.CONTENTS));
+
+                intent.putExtra("id", id);
+                intent.putExtra("title", title);
+                intent.putExtra("contents", contents);
+
+                startActivityForResult(intent, REQUEST_CODE_INSERT);
+            }
+        });
+
         super.onResume();
     }
 
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        if (savedInstanceState != null) {
-            mCurCheckPosition = savedInstanceState.getInt("curChoice", -1);
-            if (mCurCheckPosition >= 0) {
-                Activity activity = getActivity(); // activity associated with the current fragment
-                ((OnTitleSelectedListener) activity).onTitleSelected(mCurCheckPosition);
-
-                ListView lv = (ListView) getView().findViewById(R.id.listview);
-                lv.setSelection(mCurCheckPosition);
-                lv.smoothScrollToPosition(mCurCheckPosition);
-            }
-        }
-    }
+//    @Override
+//    public void onViewStateRestored(Bundle savedInstanceState) {
+//        super.onViewStateRestored(savedInstanceState);
+//        if (savedInstanceState != null) {
+//            mCurCheckPosition = savedInstanceState.getInt("curChoice", -1);
+//            if (mCurCheckPosition >= 0) {
+//                Activity activity = getActivity(); // activity associated with the current fragment
+//                ((OnTitleSelectedListener) activity).onTitleSelected(mCurCheckPosition);
+//
+//                ListView lv = (ListView) getView().findViewById(R.id.listview);
+//                lv.setSelection(mCurCheckPosition);
+//                lv.smoothScrollToPosition(mCurCheckPosition);
+//            }
+//        }
+//    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("curChoice", mCurCheckPosition);
     }
+
     private static class DataAdapter extends CursorAdapter {
 
         public DataAdapter(Context context, Cursor c) {

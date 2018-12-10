@@ -23,7 +23,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class LookActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mGoogleMap;
-    private int num;
+    private int mPostId = -1;
+    private String title;
+    private String contents;
 
     @Override
 
@@ -31,11 +33,15 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
-        num = intent.getIntExtra("index", -1);
+        if(intent != null) {
+            mPostId = intent.getIntExtra("id", -1);
+            title = intent.getStringExtra("title");
+            contents = intent.getStringExtra("contents");
+        }
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             finish();
@@ -44,7 +50,7 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         LookFragment look = new LookFragment();
         //look.setSelection(num);
-        look.setSelection(getIntent().getIntExtra("index",-1));
+        look.setSelection(mPostId, title, contents);
         getSupportFragmentManager().beginTransaction().replace(R.id.look, look).commit();
     }
 
@@ -52,8 +58,8 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        LatLng location = new LatLng(Defenseinfo.LOCATIONS[num][0], Defenseinfo.LOCATIONS[num][1]);
-        mGoogleMap.addMarker(new MarkerOptions().position(location).title(Defenseinfo.TITLES[num]));
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+//        LatLng location = new LatLng(Defenseinfo.LOCATIONS[mPostId][0], Defenseinfo.LOCATIONS[mPostId][1]);
+//        mGoogleMap.addMarker(new MarkerOptions().position(location).title(Defenseinfo.TITLES[mPostId]));
+//        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
     }
 }

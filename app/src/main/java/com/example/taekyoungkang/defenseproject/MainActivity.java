@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements TitlesFragment.OnTitleSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +53,19 @@ public class MainActivity extends AppCompatActivity implements TitlesFragment.On
         }
     }
 
-    @Override
-    public void onTitleSelected(int i) {
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE) {
-            LookFragment lookFragment = new LookFragment();
-            lookFragment.setSelection(i);
-            getSupportFragmentManager().beginTransaction().replace(R.id.look, lookFragment).commit();
-        } else {
-            Intent intent = new Intent(this, LookActivity.class);
-            intent.putExtra("index", i);
-            startActivity(intent);
-        }
-
-    }
+//    @Override
+//    public void onTitleSelected(int i) {
+//        if (getResources().getConfiguration().orientation
+//                == Configuration.ORIENTATION_LANDSCAPE) {
+//            LookFragment lookFragment = new LookFragment();
+//            lookFragment.setSelection(i);
+//            getSupportFragmentManager().beginTransaction().replace(R.id.look, lookFragment).commit();
+//        } else {
+//            Intent intent = new Intent(this, LookActivity.class);
+//            intent.putExtra("index", i);
+//            startActivity(intent);
+//        }
+//
+//    }
 
 }
