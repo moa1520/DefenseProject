@@ -15,7 +15,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:background="#cfcfcf">
         <EditText
             android:id="@+id/contents_edit"
@@ -24,4 +24,10 @@
             android:background="@android:color/transparent"
             android:hint="내용" />
     </ScrollView>
+    <Button
+        android:id="@+id/submit"
+        android:layout_gravity="right"
+        android:text="글쓰기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
