@@ -13,6 +13,8 @@ import android.widget.Toast;
 public class WriteActivity extends AppCompatActivity {
 
     private EditText mTitleEditText;
+    private EditText mNameEditText;
+    private EditText mLocationEditText;
     private EditText mContentsEditText;
     private Button submit;
 
@@ -21,8 +23,10 @@ public class WriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
 
-        mTitleEditText = findViewById(R.id.title_edit);
-        mContentsEditText = findViewById(R.id.contents_edit);
+        mTitleEditText = (EditText)findViewById(R.id.title_edit);
+        mNameEditText = (EditText)findViewById(R.id.name_edit);
+        mLocationEditText = (EditText)findViewById(R.id.location_edit);
+        mContentsEditText = (EditText)findViewById(R.id.contents_edit);
         submit = (Button) findViewById(R.id.submit);
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -30,9 +34,13 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = mTitleEditText.getText().toString();
                 String contents = mContentsEditText.getText().toString();
+                String name = mNameEditText.getText().toString();
+                String location = mLocationEditText.getText().toString();
 
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(DataContract.Data.TITLE, title);
+                contentValues.put(DataContract.Data.NAME, name);
+                contentValues.put(DataContract.Data.LOCATION, location);
                 contentValues.put(DataContract.Data.CONTENTS, contents);
 
                 SQLiteDatabase db = DBHelper.getsInstance(getApplicationContext()).getWritableDatabase();

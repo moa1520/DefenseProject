@@ -1,6 +1,6 @@
 package com.example.taekyoungkang.defenseproject;
 
-public class Defenseinfo {
+public final class Defenseinfo {
 
     public static final String[] TITLES =
             {

@@ -25,6 +25,8 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mGoogleMap;
     private int mPostId = -1;
     private String title;
+    private String name;
+    private String location;
     private String contents;
 
     @Override
@@ -33,13 +35,15 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look);
 
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
         if(intent != null) {
             mPostId = intent.getIntExtra("id", -1);
             title = intent.getStringExtra("title");
+            name = intent.getStringExtra("name");
+            location = intent.getStringExtra("location");
             contents = intent.getStringExtra("contents");
         }
 
@@ -50,7 +54,7 @@ public class LookActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         LookFragment look = new LookFragment();
         //look.setSelection(num);
-        look.setSelection(mPostId, title, contents);
+        look.setSelection(mPostId, title, name, location, contents);
         getSupportFragmentManager().beginTransaction().replace(R.id.look, look).commit();
     }
 

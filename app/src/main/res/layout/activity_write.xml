@@ -7,27 +7,44 @@
     android:orientation="vertical"
     tools:context=".WriteActivity">
 
-    <EditText
-        android:id="@+id/title_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="제목" />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#cfcfcf">
-        <EditText
-            android:id="@+id/contents_edit"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:hint="내용" />
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/title_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="제목" />
+
+            <EditText
+                android:id="@+id/name_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이름" />
+
+            <EditText
+                android:id="@+id/location_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="위치" />
+
+            <EditText
+                android:id="@+id/contents_edit"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@android:color/transparent"
+                android:hint="내용" />
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="글쓰기" />
+        </LinearLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/submit"
-        android:layout_gravity="right"
-        android:text="글쓰기"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class AnimActivity extends AppCompatActivity {
@@ -17,6 +19,14 @@ public class AnimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_anim);
 
         mrun = (ImageView) findViewById(R.id.run);
+        Button btn = (Button)findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -30,7 +40,6 @@ public class AnimActivity extends AppCompatActivity {
         mrun.setBackgroundResource(R.drawable.anim);
         AnimationDrawable runAnim = (AnimationDrawable) mrun.getBackground();
         runAnim.start();
-
     }
 
     Animation.AnimationListener animationListener = new Animation.AnimationListener() {

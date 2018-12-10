@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,17 +20,18 @@ import java.util.ArrayList;
  */
 public class LookFragment extends Fragment {
     int index = -1;
-    String title, contents;
-    TextView tv_title;
-    TextView tv_contents;
+    String title, name, location, contents;
+    TextView tv_title, tv_name, tv_location, tv_contents;
 
     public LookFragment() {
         // Required empty public constructor
     }
 
-    public void setSelection(int i, String mTitle, String mContents) {
+    public void setSelection(int i, String mTitle, String mName, String mLocation, String mContents) {
         index = i;
         title = mTitle;
+        name = mName;
+        location = mLocation;
         contents = mContents;
     }
 
@@ -40,8 +42,20 @@ public class LookFragment extends Fragment {
 
         View view = (View) inflater.inflate(R.layout.fragment_look, container, false);
         tv_title = (TextView)view.findViewById(R.id.name);
-        tv_title.setText(title);
+        tv_name = (TextView)view.findViewById(R.id.who);
+        tv_location = (TextView)view.findViewById(R.id.location);
         tv_contents = (TextView)view.findViewById(R.id.lookContents);
+        Button btn = (Button)view.findViewById(R.id.modify);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        tv_title.setText(title);
+        tv_name.setText(name);
+        tv_location.setText(location);
         tv_contents.setText(contents);
 
         // Inflate the layout for this fragment
