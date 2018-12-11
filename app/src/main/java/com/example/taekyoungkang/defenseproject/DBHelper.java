@@ -1,36 +1,31 @@
 package com.example.taekyoungkang.defenseproject;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
-    public static final int DB_VERSION = 1;
 
     public DBHelper(Context context) {
-        super(context, "defencedb", null, DB_VERSION);
+        super(context, DBContract.DB_NAME, null, DBContract.DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String defenceSql = "CREATE TABLE post (_id integer primary key autoincrement," +
-                "title not null, " +
-                "name, " +
-                "location, " +
-                "contents)";
-
-        String memberSql = "CREATE TABLE member (_id integer primary key autoincrement," +
-                "member_id not null, " +
-                "member_pw)";
-
-        db.execSQL(defenceSql);
-        db.execSQL(memberSql);
+        String sql = DBContract.Data.CREATE_TABLE;
+        db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table post");
-        db.execSQL("drop table member");
+        db.execSQL("drop table " + DBContract.Data.TABLE_NAME);
         onCreate(db);
+    }
+
+    public void insertData(String title, String name, String location, String comments) {
+        
     }
 }
