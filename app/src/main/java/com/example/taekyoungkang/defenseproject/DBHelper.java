@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
@@ -109,4 +112,23 @@ public class DBHelper extends SQLiteOpenHelper {
 //
 //        return db.update(DbContract.Users.TABLE_NAME, values, whereClause, whereArgs);
 //    }
+
+    public ArrayList<item> getListItem () {
+        String sql;
+        sql = String.format("SELECT * FROM %s",
+                DbContract.Users.TABLE_NAME);
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        ArrayList<item> data = new ArrayList<item>();
+        while(cursor.moveToNext()){
+            String title = cursor.getString(0);
+            String name = cursor.getString(1);
+            String location = cursor.getString(2);
+            String comment = cursor.getString(3);
+
+            data.add(new item(title, name, location, comment));
+        }
+
+        return data;
+    }
 }
