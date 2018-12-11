@@ -30,42 +30,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_search:
-                startActivity(new Intent(this, SearchActivity.class));
                 return true;
             case R.id.menu_add:
-                startActivity(new Intent(this, WriteActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
-
-//    @Override
-//    public void onTitleSelected(int i) {
-//        if (getResources().getConfiguration().orientation
-//                == Configuration.ORIENTATION_LANDSCAPE) {
-//            LookFragment lookFragment = new LookFragment();
-//            lookFragment.setSelection(i);
-//            getSupportFragmentManager().beginTransaction().replace(R.id.look, lookFragment).commit();
-//        } else {
-//            Intent intent = new Intent(this, LookActivity.class);
-//            intent.putExtra("index", i);
-//            startActivity(intent);
-//        }
-//
-//    }
-
 }

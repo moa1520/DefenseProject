@@ -13,18 +13,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBy9mhc9_HeeOtLa7HWu2M5OyS-EFlE9N4" />
 
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".LookActivity" />
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AnimActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
