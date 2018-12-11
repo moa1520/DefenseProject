@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class DetailActivity extends AppCompatActivity {
 
+
+        private long mld = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,8 @@ public class DetailActivity extends AppCompatActivity {
          return;
      }
 
-     DetailFragment detail = new DetailFragment();
-     getSupportFragmentManager().beginTransaction().replace(R.id.detail,detail).commit();
+     DetailFragment details = new DetailFragment();
+        details.setSelection(getIntent().getIntExtra("id", -1));
+     getSupportFragmentManager().beginTransaction().replace(R.id.details,details).commit();
     }
 }

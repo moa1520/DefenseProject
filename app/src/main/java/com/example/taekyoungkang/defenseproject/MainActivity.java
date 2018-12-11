@@ -53,4 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    @Override
+    public void onTitleSelected(int i) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("id", -1);
+        startActivity(intent);
+    }
 }
