@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainFragment.onTitleSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE){
             DetailFragment detailFragment = new DetailFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.detail,detailFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.details,detailFragment).commit();
         }
 
     }
