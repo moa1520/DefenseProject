@@ -43,14 +43,12 @@ public class MyAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.info, parent, false);
         }
 
-        TextView id = (TextView)convertView.findViewById(R.id._id);
         TextView title = (TextView)convertView.findViewById(R.id.title);
         TextView name = (TextView)convertView.findViewById(R.id.name);
         TextView location = (TextView)convertView.findViewById(R.id.location);
 
         item mitem = (item) getItem(position);
-        
-        id.setText(dbHelper.getAllUsersByMethod().getString(0));
+
         title.setText(mitem.title);
         name.setText(mitem.name);
         location.setText(mitem.location);

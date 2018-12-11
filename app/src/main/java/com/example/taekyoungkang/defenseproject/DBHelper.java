@@ -121,10 +121,10 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         ArrayList<item> data = new ArrayList<item>();
         while(cursor.moveToNext()){
-            String title = cursor.getString(0);
-            String name = cursor.getString(1);
-            String location = cursor.getString(2);
-            String comment = cursor.getString(3);
+            String title = cursor.getString(1);
+            String name = cursor.getString(2);
+            String location = cursor.getString(3);
+            String comment = cursor.getString(4);
 
             data.add(new item(title, name, location, comment));
         }
