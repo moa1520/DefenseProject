@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE){
+            DetailFragment detailFragment = new DetailFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.detail,detailFragment).commit();
+        }
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
