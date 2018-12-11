@@ -18,4 +18,6 @@
         android:duration="500" />
     <item android:drawable="@drawable/a08"
         android:duration="500" />
+    <item android:drawable="@drawable/a09"
+        android:duration="2000" />
 </animation-list>
