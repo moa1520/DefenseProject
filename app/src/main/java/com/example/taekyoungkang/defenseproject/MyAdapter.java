@@ -58,12 +58,14 @@ public class MyAdapter extends BaseAdapter {
 }
 
 class item {
+    public int _id;
     public String title;
     public String name;
     public String location;
     public String comment;
 
-    public item(String title, String name, String location, String comment) {
+    public item(int _id, String title, String name, String location, String comment) {
+        this._id = _id;
         this.title = title;
         this.name = name;
         this.location = location;
