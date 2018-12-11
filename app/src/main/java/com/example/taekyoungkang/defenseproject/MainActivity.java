@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_search:
                 return true;
             case R.id.menu_add:
+                startActivity(new Intent(this, WriteActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

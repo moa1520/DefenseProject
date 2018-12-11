@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void insertUserBySQL(String name, String user, String location, String comment) {
         try {
             String sql = String.format (
-                    "INSERT INTO %s (%s, %s, %s, %s, %s) VALUES (NULL,'%s', '%s', '%s', '%s')",
+                    "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES (NULL,'%s', '%s', '%s', '%s')",
                     DbContract.Users.TABLE_NAME,
                     DbContract.Users._ID,
                     DbContract.Users.KEY_NAME,
