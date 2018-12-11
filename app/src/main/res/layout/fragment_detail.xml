@@ -9,11 +9,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ListView
-        android:id="@+id/detail_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
     <TextView
         android:hint="설명이 들어갈 곳"
         android:id="@+id/detail_commnet"

@@ -54,10 +54,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        viewAllList();
-    }
-
-    private void viewAllList() {
         ArrayList<item> data = dbHelper.getListItem();
 
         adapter = new MyAdapter(getActivity(), data, dbHelper);
@@ -76,12 +72,13 @@ public class MainFragment extends Fragment {
 //                Cursor cursor = (Cursor) adapter.getItem(position);
             }
         });
+        bunkerList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         bunkerList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 final Cursor cursor = (Cursor) adapter.getItem(position);
-                final long deleteId = id;
+                final long deleteId = id+1;
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("글 삭제");
                 builder.setMessage("글을 삭제하시겠습니까?");
@@ -92,8 +89,8 @@ public class MainFragment extends Fragment {
                         if (count == 0) {
                             Toast.makeText(getActivity(), "삭제에 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
                         } else {
-
                             Toast.makeText(getActivity(), "글이 삭제 되었습니다", Toast.LENGTH_SHORT).show();
+                            onResume();
                         }
                     }
                 });

@@ -29,18 +29,16 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onTi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE){
-            DetailFragment detailFragment = new DetailFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.details,detailFragment).commit();
-        }
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -53,10 +51,17 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onTi
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onTitleSelected(int i) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("id", -1);
-        startActivity(intent);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            DetailFragment detailFragment = new DetailFragment();
+            detailFragment.setSelection(i);
+            getSupportFragmentManager().beginTransaction().replace(R.id.details, detailFragment).commit();
+        } else {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra("id", -1);
+            startActivity(intent);
+        }
     }
 }

@@ -1,12 +1,16 @@
 package com.example.taekyoungkang.defenseproject;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -34,11 +38,15 @@ public class DetailFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-        ListView lv = (ListView) rootView.findViewById(R.id.detail_list);
         DBHelper dbHelper = new DBHelper(getActivity());
-        ArrayList<item> data = dbHelper.getListItem();
-        MyAdapter adapter = new MyAdapter(getActivity(), data, dbHelper);
-        lv.setAdapter(adapter);
+        TextView tv = (TextView)rootView.findViewById(R.id.detail_commnet);
+        Cursor cursor = dbHelper.getAllUsersByMethod();
+        if(cursor == null) {
+            Toast.makeText(getActivity(), "가져오는데 실패함", Toast.LENGTH_SHORT).show();
+        }
+        cursor.moveToFirst();
+        String comment = cursor.getString(4);
+        tv.setText(comment);
 
         return rootView;
 

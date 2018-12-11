@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.delete(DbContract.Users.TABLE_NAME, DbContract.Users._ID + " = " + _id, null);
     }
 
-//    public long updateUserByMethod(String _id, String name, String phone) {
+    //    public long updateUserByMethod(String _id, String name, String phone) {
 //        SQLiteDatabase db = getWritableDatabase();
 //
 //        ContentValues values = new ContentValues();
@@ -111,6 +111,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //
 //        return db.update(DbContract.Users.TABLE_NAME, values, whereClause, whereArgs);
 //    }
+
 
     public ArrayList<item> getListItem() {
         String sql;
@@ -128,27 +129,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
             data.add(new item(_id, title, name, location, comment));
         }
-
-        return data;
-    }
-
-    public ArrayList<item> getDetailItem(int i) {
-        String sql;
-        sql = String.format("SELECT * FROM %s",
-                DbContract.Users.TABLE_NAME);
-
-        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
-        for(int j = 0; j<i; j++) {
-            cursor.moveToNext();
-        }
-        ArrayList<item> data = new ArrayList<item>();
-        int _id = cursor.getInt(0);
-        String title = cursor.getString(1);
-        String name = cursor.getString(2);
-        String location = cursor.getString(3);
-        String comment = cursor.getString(4);
-
-        data.add(new item(_id, title, name, location, comment));
 
         return data;
     }
